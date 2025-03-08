@@ -75,7 +75,7 @@
       <v-col 
         v-for="product in filteredProducts" 
         :key="product.id"
-        :cols="viewType === 'grid' ? 12 : 12"
+        :cols="12"
         :sm="viewType === 'grid' ? 6 : 12"
         :md="viewType === 'grid' ? 4 : 12"
         class="pb-6"
@@ -86,20 +86,20 @@
             viewType === 'list' ? 'd-flex flex-row align-center' : '',
             'rounded-xl'
           ]"
-          height="100%"
           elevation="2"
           :hover="true"
         >
           <v-img
             :src="product.image"
-            :height="viewType === 'grid' ? '250' : '180'"
+            :aspect-ratio="16/9"
             :width="viewType === 'list' ? '200' : '100%'"
             cover
+            :contain="true"
             class="bg-grey-lighten-2"
           >
             <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular indeterminate color="primary"></v-progress-circular>
+              <v-row class="fill-height ma-0" align="center" justify="center" style="background: rgba(238,238,238,)">
+                <v-progress-circular indeterminate color="primary" :size="50" :width="4"></v-progress-circular>
               </v-row>
             </template>
             <div class="image-overlay">
@@ -131,7 +131,7 @@
               {{ product.name }}
             </v-card-title>
 
-            <v-card-text class="px-0 pt-3">
+            <v-card-text class="px-0 pt-3 product-card-description">
               <p class="mb-4 text-body-1">{{ product.description }}</p>
               <v-chip-group v-if="product.features" class="mb-4">
                 <v-chip
@@ -202,7 +202,7 @@
         <v-container class="pa-8">
           <v-row>
             <v-col cols="12" md="8">
-              <p class="text-body-1 mb-6">{{ selectedProduct.description }}</p>
+              <p class="text-body-1 mb-6 product-dialog-description">{{ selectedProduct.description }}</p>
               
               <h3 class="text-h5 font-weight-bold mb-4">Características</h3>
               <v-chip-group class="mb-6">
@@ -307,7 +307,7 @@ export default {
         id: 1,
         name: 'Actuador Doble Efecto ISO Serie 3',
         category: 'Actuadores',
-        image: 'https://chetti666.github.io/web/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.png',
+        image: '/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.png',
         description: 'Actuador neumático de doble efecto, diseñado según normas ISO para máxima compatibilidad y rendimiento.',
         features: ['Doble Efecto', 'Norma ISO', 'Alta Durabilidad'],
         specifications: {
@@ -321,7 +321,7 @@ export default {
         id: 2,
         name: 'Conector Tipo L Tecnopolímero',
         category: 'Conectores',
-        image: 'https://chetti666.github.io/web/images/grcontrol/productos/01-CONECTOR-TIPO-L-TECNOPOLIMERO.png',
+        image: '/images/grcontrol/productos/01-CONECTOR-TIPO-L-TECNOPOLIMERO.png',
         description: 'Conector en ángulo L fabricado en tecnopolímero de alta resistencia, ideal para conexiones neumáticas.',
         features: ['Alta Resistencia', 'Fácil Instalación', 'Ligero'],
         specifications: {
@@ -335,7 +335,7 @@ export default {
         id: 3,
         name: 'FRL Syntesi',
         category: 'FRL',
-        image: 'https://chetti666.github.io/web/images/grcontrol/productos/01-FRL-SYNTESI.png',
+        image: '/images/grcontrol/productos/01-FRL-SYNTESI.png',
         description: 'Unidad de mantenimiento FRL (Filtro, Regulador, Lubricador) serie Syntesi para sistemas neumáticos.',
         features: ['Filtración Eficiente', 'Regulación Precisa', 'Lubricación Controlada'],
         specifications: {
@@ -349,7 +349,7 @@ export default {
         id: 4,
         name: 'Válvula Manual de Palanca Serie 70',
         category: 'Válvulas',
-        image: 'https://chetti666.github.io/web/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.png',
+        image: '/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.png',
         description: 'Válvula de control manual con palanca, Serie 70, para control preciso de flujo en sistemas neumáticos.',
         features: ['Control Manual', 'Alta Precisión', 'Diseño Robusto'],
         specifications: {
@@ -363,7 +363,7 @@ export default {
         id: 5,
         name: 'Emporia CP',
         category: 'Control',
-        image: 'https://chetti666.github.io/web/images/grcontrol/productos/EmporiaCP.webp',
+        image: '/images/grcontrol/productos/EmporiaCP.webp',
         description: 'Sistema de control y monitoreo avanzado para aplicaciones industriales.',
         features: ['Control Avanzado', 'Monitoreo en Tiempo Real', 'Interfaz Intuitiva'],
         specifications: {
@@ -433,6 +433,20 @@ export default {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s;
+}
+.product-card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-dialog-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-card:hover .image-overlay {
