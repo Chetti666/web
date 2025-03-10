@@ -308,7 +308,7 @@ export default {
         id: 1,
         name: 'Actuador Doble Efecto ISO Serie 3',
         category: 'Actuadores',
-        image: require('@/assets/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.png'),
+        image: require('@/assets/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.webp'),
         description: 'Actuador neumático de doble efecto, diseñado según normas ISO para máxima compatibilidad y rendimiento.',
         features: ['Doble Efecto', 'Norma ISO', 'Alta Durabilidad'],
         specifications: {
@@ -322,7 +322,7 @@ export default {
         id: 2,
         name: 'Conector Tipo L Tecnopolímero',
         category: 'Conectores',
-        image: 'images/grcontrol/productos/01-CONECTOR-TIPO-L-TECNOPOLIMERO.png',
+        image: require('@/assets/images/grcontrol/productos/01-CONECTOR-TIPO-L-TECNOPOLIMERO.webp'), // Corregido
         description: 'Conector en ángulo L fabricado en tecnopolímero de alta resistencia, ideal para conexiones neumáticas.',
         features: ['Alta Resistencia', 'Fácil Instalación', 'Ligero'],
         specifications: {
@@ -336,7 +336,7 @@ export default {
         id: 3,
         name: 'FRL Syntesi',
         category: 'FRL',
-        image: '/images/grcontrol/productos/01-FRL-SYNTESI.png',
+        image: require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI.webp'), // Corregido
         description: 'Unidad de mantenimiento FRL (Filtro, Regulador, Lubricador) serie Syntesi para sistemas neumáticos.',
         features: ['Filtración Eficiente', 'Regulación Precisa', 'Lubricación Controlada'],
         specifications: {
@@ -350,7 +350,7 @@ export default {
         id: 4,
         name: 'Válvula Manual de Palanca Serie 70',
         category: 'Válvulas',
-        image: '/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.png',
+        image: require('@/assets/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.webp'), // Corregido
         description: 'Válvula de control manual con palanca, Serie 70, para control preciso de flujo en sistemas neumáticos.',
         features: ['Control Manual', 'Alta Precisión', 'Diseño Robusto'],
         specifications: {
@@ -364,7 +364,7 @@ export default {
         id: 5,
         name: 'Emporia CP',
         category: 'Control',
-        image: '/images/grcontrol/productos/EmporiaCP.webp',
+        image: require('@/assets/images/grcontrol/productos/EmporiaCP.webp'), // Corregido
         description: 'Sistema de control y monitoreo avanzado para aplicaciones industriales.',
         features: ['Control Avanzado', 'Monitoreo en Tiempo Real', 'Interfaz Intuitiva'],
         specifications: {
@@ -398,6 +398,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 .productos-container {
