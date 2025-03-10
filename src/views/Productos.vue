@@ -308,7 +308,7 @@ export default {
         id: 1,
         name: 'Actuador Doble Efecto ISO Serie 3',
         category: 'Actuadores',
-        image: 'images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.png',
+        image: require('@/assets/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.png'),
         description: 'Actuador neumático de doble efecto, diseñado según normas ISO para máxima compatibilidad y rendimiento.',
         features: ['Doble Efecto', 'Norma ISO', 'Alta Durabilidad'],
         specifications: {
