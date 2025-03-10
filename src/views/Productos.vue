@@ -89,29 +89,30 @@
           elevation="2"
           :hover="true"
         >
-          <v-img
-            :src="product.image"
-            :aspect-ratio="16/9"
-            :width="viewType === 'list' ? '200' : '100%'"
-            cover
-            :contain="true"
-            class="bg-grey-lighten-2"
-          >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center" style="background: rgba(238,238,238,)">
-                <v-progress-circular indeterminate color="primary" :size="50" :width="4"></v-progress-circular>
-              </v-row>
-            </template>
-            <div class="image-overlay">
-              <v-btn
-                icon="mdi-magnify"
-                size="large"
-                color="white"
-                variant="text"
-                @click="showProductDetails(product)"
-              ></v-btn>
-            </div>
-          </v-img>
+        <v-img
+  v-if="product.image"  
+  :src="product.image"
+  :aspect-ratio="16/9"
+  :width="viewType === 'list' ? '200' : '100%'"
+  cover
+  :contain="true"
+  class="bg-grey-lighten-2"
+>
+  <template v-slot:placeholder>
+    <v-row class="fill-height ma-0" align="center" justify="center" style="background: rgba(238,238,238,)">
+      <v-progress-circular indeterminate color="primary" :size="50" :width="4"></v-progress-circular>
+    </v-row>
+  </template>
+  <div class="image-overlay">
+    <v-btn
+      icon="mdi-magnify"
+      size="large"
+      color="white"
+      variant="text"
+      @click="showProductDetails(product)"
+    ></v-btn>
+  </div>
+</v-img>
 
           <div :class="[
             viewType === 'list' ? 'flex-grow-1 pa-6' : 'pa-4',
