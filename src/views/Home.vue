@@ -192,7 +192,7 @@ export default {
   data: () => ({
     heroSlides: [
       {
-        image: '/images/grcontrol/hero/slide1.jpg',
+        image: require('@/assets/images/grcontrol/hero/slide1.webp'),
         title: 'Expertos en Automatización Industrial',
         subtitle: 'Soluciones en neumática, bombas y variadores de frecuencia',
         primaryButton: {
@@ -205,7 +205,7 @@ export default {
         }
       },
       {
-        image: '/images/grcontrol/hero/slide2.jpg',
+        image: require('@/assets/images/grcontrol/hero/slide2.webp'),
         title: 'Servicios de Mantenimiento',
         subtitle: 'Mantenimiento preventivo y correctivo para sus equipos',
         primaryButton: {
@@ -218,7 +218,7 @@ export default {
         }
       },
       {
-        image: '/images/grcontrol/hero/slide3.jpg',
+        image: require('@/assets/images/grcontrol/hero/slide3.webp'),
         title: 'Capacitación Especializada',
         subtitle: 'Programas de formación para su equipo técnico',
         primaryButton: {
