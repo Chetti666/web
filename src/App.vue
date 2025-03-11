@@ -12,7 +12,7 @@
           <v-col cols="auto">
             <router-link to="/" class="logo-container">
               <img
-                src="/images/brand/GR_CONTROL.png"
+                :src="require('@/assets/images/brand/GR_CONTROL.webp')"
                 alt="GR Control Logo"
                 class="company-logo"
               />
@@ -65,7 +65,7 @@
       <v-list>
         <v-list-item class="pa-4 mb-4">
           <img
-            src="/images/brand/GR_CONTROL.png"
+            :src="require('@/assets/images/brand/GR_CONTROL.webp')"
             alt="GR Control Logo"
             class="mobile-logo"
           />
@@ -107,7 +107,7 @@
         <v-row>
           <v-col cols="12" md="4" class="text-center text-md-left">
             <v-img
-              src="/images/brand/GR_CONTROL.png"
+              :src="require('@/assets/images/brand/GR_CONTROL.webp')"
               alt="GR Control Logo"
               height="65"
               contain

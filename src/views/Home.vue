@@ -94,7 +94,7 @@
         <v-col cols="12" md="4">
           <v-card class="mx-auto" max-width="400">
             <v-img
-              src="/images/grcontrol/productos/01-FRL-SYNTESI.png"
+              :src="require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI.webp')"
               height="200"
               cover
             ></v-img>
@@ -118,7 +118,7 @@
         <v-col cols="12" md="4">
           <v-card class="mx-auto" max-width="400">
             <v-img
-              src="/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.png"
+              :src="require('@/assets/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.webp')"
               height="200"
               cover
             ></v-img>
@@ -142,7 +142,7 @@
         <v-col cols="12" md="4">
           <v-card class="mx-auto" max-width="400">
             <v-img
-              src="/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.png"
+              :src="require('@/assets/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.webp')"
               height="200"
               cover
             ></v-img>
