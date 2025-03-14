@@ -247,7 +247,7 @@ export default {
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 2s forwards;
+  animation: fadeInUp 1s forwards;
 }
 
 .fade-in-up.delay-1 {
