@@ -53,6 +53,7 @@
     </v-carousel>
 
 
+
     <!-- Servicios Principales -->
     <v-container class="py-12">
       <v-row>
@@ -246,11 +247,11 @@ export default {
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
+  animation: fadeInUp 2s forwards;
 }
 
 .fade-in-up.delay-1 {
-  animation-delay: 0.5s;
+  animation-delay: 0.6s;
 }
 
 @keyframes fadeInUp {
@@ -296,37 +297,24 @@ export default {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
 
-/* Estilos de las imágenes del carrusel */
+/* Estilos de las imágenes del carrusel ajustado a 1280px */
 .carousel-image {
   position: relative;
   overflow: hidden;
+  width: 1280px;
+  max-width: 100%;
   height: 100%;
+  margin: 0 auto;
 }
 
-.carousel-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.9) saturate(1.2) contrast(1.1);
-  will-change: transform, filter;
-  transition: transform 0.5s ease-out, filter 0.5s ease;
+.v-carousel__controls .v-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  transition: background-color 0.3s ease;
 }
 
-.v-carousel-item {
-  transition: opacity 0.8s ease;
-}
-
-.v-carousel-item--active {
-  opacity: 1;
-}
-
-.v-carousel-item--prev,
-.v-carousel-item--next {
-  opacity: 0.2;
-}
-
-.v-carousel:hover .carousel-image img {
-  transform: scale(1.05);
+.v-carousel__controls .v-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .v-carousel__controls {
