@@ -52,44 +52,6 @@
       </v-carousel-item>
     </v-carousel>
 
-
-
-    <!-- Servicios Principales -->
-    <v-container class="py-12">
-      <v-row>
-        <v-col cols="12" class="text-center mb-8">
-          <h2 class="text-h3">Nuestros Servicios</h2>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-card class="service-card" flat>
-            <v-card-text class="text-center">
-              <v-icon size="64" color="primary" class="mb-4">mdi-wrench</v-icon>
-              <h3 class="text-h5 mb-4">Mantenimiento</h3>
-              <p>Servicio técnico especializado para equipos neumáticos e hidráulicos</p>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-card class="service-card" flat>
-            <v-card-text class="text-center">
-              <v-icon size="64" color="primary" class="mb-4">mdi-school</v-icon>
-              <h3 class="text-h5 mb-4">Capacitación</h3>
-              <p>Programas de formación en automatización y control industrial</p>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-card class="service-card" flat>
-            <v-card-text class="text-center">
-              <v-icon size="64" color="primary" class="mb-4">mdi-cog</v-icon>
-              <h3 class="text-h5 mb-4">Automatización</h3>
-              <p>Diseño e implementación de sistemas de control automático</p>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-
     <!-- Productos Destacados -->
     <v-container class="py-12 grey-lighten-4">
       <v-row>
@@ -117,7 +79,6 @@
           </v-card-actions>
           </v-card>
         </v-col>
-
 
         <!-- Actuador -->
         <v-col cols="12" md="4">
@@ -170,6 +131,43 @@
         </v-col>
       </v-row>
     </v-container>
+
+<!-- Servicios Principales -->
+<v-container class="py-12">
+      <v-row>
+        <v-col cols="12" class="text-center mb-8">
+          <h2 class="text-h3">Nuestros Servicios</h2>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-card class="service-card" flat>
+            <v-card-text class="text-center">
+              <v-icon size="64" color="primary" class="mb-4">mdi-wrench</v-icon>
+              <h3 class="text-h5 mb-4">Mantenimiento</h3>
+              <p>Servicio técnico especializado para equipos neumáticos e hidráulicos</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-card class="service-card" flat>
+            <v-card-text class="text-center">
+              <v-icon size="64" color="primary" class="mb-4">mdi-school</v-icon>
+              <h3 class="text-h5 mb-4">Capacitación</h3>
+              <p>Programas de formación en automatización y control industrial</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-card class="service-card" flat>
+            <v-card-text class="text-center">
+              <v-icon size="64" color="primary" class="mb-4">mdi-cog</v-icon>
+              <h3 class="text-h5 mb-4">Automatización</h3>
+              <p>Diseño e implementación de sistemas de control automático</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+
 
     <!-- Sección CTA -->
     <v-container class="py-12">
@@ -279,7 +277,7 @@ export default {
 }
 
 .outline-hover-secondary {
-  background-color: #000000;
+  background-color: #000000be;
   color: #ffffff;
   border-color: #000000;
   transition: 0.3s ease;
