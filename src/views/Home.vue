@@ -22,25 +22,26 @@
           <v-container>
             <v-row justify="center">
               <v-col cols="12" md="8" class="text-center">
-                <h1 class="text-h2 font-weight-bold mb-4 text-white">
+                <h1 class="text-h2 font-weight-bold mb-4 text-shadow fade-in-up">
                   {{ slide.title }}
                 </h1>
-                <p class="text-h5 mb-8 text-white">
+                <p class="text-h5 mb-8 text-shadow fade-in-up delay-1">
                   {{ slide.subtitle }}
                 </p>
                 <v-btn
                   color="primary"
                   size="x-large"
                   :to="slide.primaryButton.link"
-                  class="mr-4"
+                  class="mr-4 pulse-button"
                 >
                   {{ slide.primaryButton.text }}
                 </v-btn>
                 <v-btn
                   variant="outlined"
                   size="x-large"
-                  color="white"
+                  color="secondary"
                   :to="slide.secondaryButton.link"
+                  class="outline-hover-secondary"
                 >
                   {{ slide.secondaryButton.text }}
                 </v-btn>
@@ -50,6 +51,7 @@
         </div>
       </v-carousel-item>
     </v-carousel>
+
 
     <!-- Servicios Principales -->
     <v-container class="py-12">
@@ -240,23 +242,61 @@ export default {
 </script>
 
 <style scoped>
-
-.service-card {
-  transition: transform 0.3s;
+/* Animaciones del texto */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
+.fade-in-up.delay-1 {
+  animation-delay: 0.5s;
 }
 
-.v-carousel {
-  box-shadow: none;
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.v-carousel .v-window__container {
-  border-radius: 0;
+/* Efecto de botón dinámico */
+.pulse-button {
+  animation: pulse 2s infinite;
 }
 
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.outline-hover-secondary {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+  transition: 0.3s ease;
+}
+
+.outline-hover-secondary:hover {
+  background-color: #4a90e2;
+  color: #ffffff;
+  border-color: #4a90e2;
+}
+
+/* Sombra para mejorar legibilidad del texto */
+.text-shadow {
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Estilos de las imágenes del carrusel */
 .carousel-image {
   position: relative;
   overflow: hidden;
@@ -267,7 +307,7 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.85) sepia(0.2) saturate(1.1) contrast(1.05);
+  filter: brightness(0.9) saturate(1.2) contrast(1.1);
   will-change: transform, filter;
   transition: transform 0.5s ease-out, filter 0.5s ease;
 }
@@ -285,126 +325,11 @@ export default {
   opacity: 0.2;
 }
 
-.carousel-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.carousel-content {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 4rem);
-  max-width: 1400px;
-  height: 100%;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(1px);
-}
-
-.carousel-content h1 {
-  font-size: 4rem;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-  font-weight: 700;
-}
-
-.carousel-content p {
-  font-size: 1.75rem;
-  line-height: 1.5;
-  margin-bottom: 3rem;
-  max-width: 800px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: 500;
-}
-
-.carousel-content .v-btn {
-  margin: 0.75rem;
-  min-width: 220px;
-  font-weight: 700;
-  letter-spacing: 0.75px;
-  font-size: 1.1rem;
-  padding: 1.25rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-content .v-btn--outlined {
-  border-width: 2px;
-}
-
-.carousel-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.carousel-content p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.carousel-content .v-btn {
-  min-width: 160px;
-  font-size: 0.9rem;
-}
-
-@media (min-width: 960px) {
-  .carousel-content h1 {
-    font-size: 2.8rem;
-  }
-  
-  .carousel-content p {
-    font-size: 1.4rem;
-  }
-  
-  .carousel-content .v-btn {
-    min-width: 180px;
-    font-size: 1rem;
-  }
-}
-
-.v-carousel {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.v-carousel__controls {
-  z-index: 4;
-}
-
 .v-carousel:hover .carousel-image img {
   transform: scale(1.05);
 }
 
-@media (max-width: 960px) {
-  .carousel-image::before,
-  .carousel-image::after {
-    width: 15%;
-    min-width: 50px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .carousel-image img {
-    object-fit: cover;
-  }
-  
-  .carousel-image::before,
-  .carousel-image::after {
-    width: 25%;
-  }
+.v-carousel__controls {
+  z-index: 4;
 }
 </style>
