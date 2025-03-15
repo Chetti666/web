@@ -292,4 +292,41 @@ export default {
 .v-carousel__controls {
   z-index: 4;
 }
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.v-card-title {
+  color: #333;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.v-card-text {
+  color: #555;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0 16px;
+}
+
+.v-btn text-white {
+  width: 100%;
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+.v-btn:hover {
+  background-color: #4a90e2 !important;
+  color: #fff !important;
+}
 </style>
