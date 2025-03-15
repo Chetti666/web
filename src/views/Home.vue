@@ -2,135 +2,81 @@
   <div>
     <!-- Hero Carousel Section -->
     <v-carousel
-      cycle
-      :height="$vuetify.display.mobile ? '70vh' : '90vh'"
-      max-height="800"
-      hide-delimiter-background
-      show-arrows="hover"
-      interval="5000"
+    cycle
+    :height="$vuetify.display.mobile ? '70vh' : '90vh'"
+    max-height="800"
+    hide-delimiter-background
+    show-arrows="hover"
+    interval="5000"
+    :transition="'fade'"
+  >
+    <v-carousel-item
+      v-for="(slide, i) in heroSlides"
+      :key="i"
+      :src="slide.image"
+      
+      contain
+      class="carousel-image"
     >
-      <v-carousel-item
-        v-for="(slide, i) in heroSlides"
-        :key="i"
-        :src="slide.image"
-        :srcset="`${slide.image}?w=800 800w, ${slide.image}?w=1200 1200w, ${slide.image}?w=1600 1600w`"
-        sizes="(max-width: 600px) 800px, (max-width: 960px) 1200px, 1600px"
-        contain
-        class="carousel-image"
-      >
-        <div class="carousel-content fill-height d-flex align-center">
-          <v-container>
-            <v-row justify="center">
-              <v-col cols="12" md="8" class="text-center">
-                <h1 class="text-h2 font-weight-bold mb-4 text-shadow fade-in-up">
-                  {{ slide.title }}
-                </h1>
-                <p class="text-h5 mb-8 text-shadow fade-in-up delay-1">
-                  {{ slide.subtitle }}
-                </p>
-                <v-btn
-                  color="primary"
-                  size="x-large"
-                  :to="slide.primaryButton.link"
-                  class="mr-4 pulse-button"
-                >
-                  {{ slide.primaryButton.text }}
-                </v-btn>
-                <v-btn
-                  variant="outlined"
-                  size="x-large"
-                  color="secondary"
-                  :to="slide.secondaryButton.link"
-                  class="outline-hover-secondary"
-                >
-                  {{ slide.secondaryButton.text }}
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-container>
-        </div>
-      </v-carousel-item>
-    </v-carousel>
+      <div class="carousel-content fill-height d-flex align-center">
+        <v-container>
+          <v-row justify="center">
+            <v-col cols="12" md="8" class="text-center">
+              <h1 class="text-h2 font-weight-bold mb-4 text-shadow fade-in-up">
+                {{ slide.title }}
+              </h1>
+              <p class="text-h5 mb-8 text-shadow fade-in-up delay-1">
+                {{ slide.subtitle }}
+              </p>
+              <v-btn
+                color="primary"
+                size="x-large"
+                :to="slide.primaryButton.link"
+                class="mr-4 pulse-button"
+              >
+                {{ slide.primaryButton.text }}
+              </v-btn>
+              <v-btn
+                variant="outlined"
+                size="x-large"
+                color="secondary"
+                :to="slide.secondaryButton.link"
+                class="outline-hover-secondary"
+              >
+                {{ slide.secondaryButton.text }}
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
+    </v-carousel-item>
+  </v-carousel>
 
     <!-- Productos Destacados -->
     <v-container class="py-12 grey-lighten-4">
-      <v-row>
-        <v-col cols="12" class="text-center mb-8">
-          <h2 class="text-h3">Productos Destacados</h2>
-        </v-col>
-        
-        <!-- FRL Syntesi -->
-        <v-col cols="12" md="4">
-          <v-card min-height="560" class="d-flex flex-column">
-            <v-card-media height="200">
-              <v-img
-                :src="require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI.webp')"
-                alt="FRL Syntesi"
-              ></v-img>
-            </v-card-media>
-          <v-card-title>FRL Syntesi</v-card-title>
-          <v-card-text flex-grow-1>
-          Unidad de mantenimiento FRL para sistemas neumáticos de alta eficiencia.
-          </v-card-text>
+    <v-row>
+      <v-col cols="12" class="text-center mb-8">
+        <h2 class="text-h3 font-weight-bold">Productos Destacados</h2>
+      </v-col>
+      <v-col
+        v-for="(product, index) in featuredProducts"
+        :key="index"
+        cols="12"
+        md="4"
+      >
+        <v-card class="d-flex flex-column product-card" elevation="3">
+          <v-img :src="product.image" :alt="product.title" height="200px"></v-img>
+          <v-card-title class="text-h5 font-weight-bold">{{ product.title }}</v-card-title>
+          <v-card-text class="flex-grow-1">{{ product.description }}</v-card-text>
           <v-card-actions>
-            <v-btn color="primary" variant="text" to="/productos">
-              Ver Más
+            <v-btn :color="product.buttonColor" variant="elevated" :to="product.link" class="text-white font-weight-bold">
+              {{ product.buttonText }}
             </v-btn>
           </v-card-actions>
-          </v-card>
-        </v-col>
-
-        <!-- Actuador -->
-        <v-col cols="12" md="4">
-          <v-card min-height="560" class="d-flex flex-column">
-            <v-card-media height="200">
-            <v-img
-              :src="require('@/assets/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.webp')"
-              alt="Actuador"
-            ></v-img>
-            </v-card-media>
-            <v-card-title>Actuador Serie 3</v-card-title>
-            <v-card-text flex-grow-1>
-              Actuador neumático de doble efecto con certificación ISO.
-            </v-card-text>
-            <v-card-actions>
-              <v-btn
-                color="primary"
-                variant="text"
-                to="/productos"
-              >
-                Ver Más
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-
-        <!-- Válvula -->
-        <v-col cols="12" md="4">
-          <v-card min-height="560" class="d-flex flex-column">
-            <v-card-media height="200">
-            <v-img
-              :src="require('@/assets/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.webp')"
-              alt="Válvula"
-            ></v-img>
-            </v-card-media>
-            <v-card-title>Válvula Serie 70</v-card-title>
-            <v-card-text flex-grow-1>
-              Válvula manual de palanca para control preciso de flujo.
-            </v-card-text>
-            <v-card-actions>
-              <v-btn
-                color="primary"
-                variant="text"
-                to="/productos"
-              >
-                Ver Más
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 
 <!-- Servicios Principales -->
 <v-container class="py-12">
@@ -168,7 +114,6 @@
       </v-row>
     </v-container>
 
-
     <!-- Sección CTA -->
     <v-container class="py-12">
       <v-row align="center" justify="center">
@@ -194,50 +139,78 @@
 <script>
 export default {
   name: 'HomeView',
-  data: () => ({
-    heroSlides: [
-      {
-        image: require('@/assets/images/grcontrol/hero/slide1.webp'),
-        title: 'Expertos en Automatización Industrial',
-        subtitle: 'Soluciones en neumática, bombas y variadores de frecuencia',
-        primaryButton: {
-          text: 'Ver Productos',
+  data() {
+    return {
+      heroSlides: [
+        {
+          image: require('@/assets/images/grcontrol/hero/slide1.webp'),
+          title: 'Expertos en Automatización Industrial',
+          subtitle: 'Soluciones en neumática, bombas y variadores de frecuencia',
+          primaryButton: {
+            text: 'Ver Productos',
+            link: '/productos'
+          },
+          secondaryButton: {
+            text: 'Contáctenos',
+            link: '/contacto'
+          }
+        },
+        {
+          image: require('@/assets/images/grcontrol/hero/slide2a.webp'),
+          title: 'Servicios de Mantenimiento',
+          subtitle: 'Mantenimiento preventivo y correctivo para sus equipos',
+          primaryButton: {
+            text: 'Nuestros Servicios',
+            link: '/servicios'
+          },
+          secondaryButton: {
+            text: 'Solicitar Visita',
+            link: '/contacto'
+          }
+        },
+        {
+          image: require('@/assets/images/grcontrol/hero/slide3.webp'),
+          title: 'Capacitación Especializada',
+          subtitle: 'Programas de formación para su equipo técnico',
+          primaryButton: {
+            text: 'Ver Programas',
+            link: '/servicios'
+          },
+          secondaryButton: {
+            text: 'Más Información',
+            link: '/contacto'
+          }
+        }
+      ],
+      featuredProducts: [
+        {
+          title: 'FRL Syntesi',
+          description: 'Unidad de mantenimiento FRL para sistemas neumáticos de alta eficiencia.',
+          image: require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI.webp'),
+          buttonText: 'Ver Más',
+          buttonColor: 'primary',
           link: '/productos'
         },
-        secondaryButton: {
-          text: 'Contáctenos',
-          link: '/contacto'
-        }
-      },
-      {
-        image: require('@/assets/images/grcontrol/hero/slide2.webp'),
-        title: 'Servicios de Mantenimiento',
-        subtitle: 'Mantenimiento preventivo y correctivo para sus equipos',
-        primaryButton: {
-          text: 'Nuestros Servicios',
-          link: '/servicios'
+        {
+          title: 'Actuador Serie 3',
+          description: 'Actuador neumático de doble efecto con certificación ISO.',
+          image: require('@/assets/images/grcontrol/productos/01-ACTUADOR-DOBLE-EFECTO-TIPO-ISO-SERIE-3.webp'),
+          buttonText: 'Ver Más',
+          buttonColor: 'primary',
+          link: '/productos'
         },
-        secondaryButton: {
-          text: 'Solicitar Visita',
-          link: '/contacto'
+        {
+          title: 'Válvula Serie 70',
+          description: 'Válvula manual de palanca para control preciso de flujo.',
+          image: require('@/assets/images/grcontrol/productos/VALVULA-MANUAL-DE-PALANCA-SERIE-70.webp'),
+          buttonText: 'Ver Más',
+          buttonColor: 'primary',
+          link: '/productos'
         }
-      },
-      {
-        image: require('@/assets/images/grcontrol/hero/slide3.webp'),
-        title: 'Capacitación Especializada',
-        subtitle: 'Programas de formación para su equipo técnico',
-        primaryButton: {
-          text: 'Ver Programas',
-          link: '/servicios'
-        },
-        secondaryButton: {
-          text: 'Más Información',
-          link: '/contacto'
-        }
-      }
-    ]
-  })
-}
+      ]
+    };
+  }
+};
 </script>
 
 <style scoped>
@@ -295,14 +268,15 @@ export default {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
 
-/* Estilos de las imágenes del carrusel ajustado a 1280px */
+/* Estilos de las imágenes del carrusel ajustadas */
 .carousel-image {
-  position: relative;
-  overflow: hidden;
-  width: 1280px;
-  max-width: 100%;
-  height: 100%;
+  
+  width: 100%;
+  max-width: 1920px;
+  height: 700px; /* Más alto para pantallas grandes */
+  object-fit: cover;
   margin: 0 auto;
+  transition: transform 0.8s ease-in-out;
 }
 
 .v-carousel__controls .v-btn {
