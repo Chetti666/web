@@ -3,8 +3,7 @@
     <!-- Hero Carousel Section -->
     <v-carousel
     cycle
-    :height="$vuetify.display.mobile ? '70vh' : '90vh'"
-    max-height="800"
+    :height="$vuetify.display.mobile ? '60vh' : '90vh'"
     hide-delimiter-background
     show-arrows="hover"
     interval="5000"
@@ -14,23 +13,21 @@
       v-for="(slide, i) in heroSlides"
       :key="i"
       :src="slide.image"
-      
-      contain
       class="carousel-image"
     >
       <div class="carousel-content fill-height d-flex align-center">
         <v-container>
           <v-row justify="center">
             <v-col cols="12" md="8" class="text-center">
-              <h1 class="text-h2 font-weight-bold mb-4 text-shadow fade-in-up">
+              <h1 class="text-h3 font-weight-bold mb-4 text-shadow fade-in-up">
                 {{ slide.title }}
               </h1>
-              <p class="text-h5 mb-8 text-shadow fade-in-up delay-1">
+              <p class="text-h6 mb-8 text-shadow fade-in-up delay-1">
                 {{ slide.subtitle }}
               </p>
               <v-btn
                 color="primary"
-                size="x-large"
+                size="large"
                 :to="slide.primaryButton.link"
                 class="mr-4 pulse-button"
               >
@@ -38,10 +35,10 @@
               </v-btn>
               <v-btn
                 variant="outlined"
-                size="x-large"
+                size="large"
                 color="secondary"
                 :to="slide.secondaryButton.link"
-                class="outline-hover-secondary"
+                class="outline-hover-secondary carousel-btn"
               >
                 {{ slide.secondaryButton.text }}
               </v-btn>
@@ -69,7 +66,7 @@
           <v-card-title class="text-h5 font-weight-bold">{{ product.title }}</v-card-title>
           <v-card-text class="flex-grow-1">{{ product.description }}</v-card-text>
           <v-card-actions>
-            <v-btn :color="product.buttonColor" variant="elevated" :to="product.link" class="text-white font-weight-bold">
+            <v-btn :color="product.buttonColor" variant="elevated" :to="product.link" class="text-white font-weight-bold product-btn">
               {{ product.buttonText }}
             </v-btn>
           </v-card-actions>
@@ -270,28 +267,42 @@ export default {
 
 /* Estilos de las imágenes del carrusel ajustadas */
 .carousel-image {
-  
   width: 100%;
-  max-width: 1920px;
-  height: 700px; /* Más alto para pantallas grandes */
+  height: 60vh;
+  max-height: 700px;
   object-fit: cover;
   margin: 0 auto;
   transition: transform 0.8s ease-in-out;
 }
 
+@media (min-width: 1440px) {
+  .carousel-image {
+    height: 80vh;
+  }
+}
+@media (max-width: 600px) {
+  .carousel-content {
+    margin-top: 0;
+  }
+}
 .v-carousel__controls .v-btn {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #ffffff;
-  transition: background-color 0.3s ease;
+  height: 50px;
+  min-width: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .v-carousel__controls .v-btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
 }
 
 .v-carousel__controls {
   z-index: 4;
 }
+
+
 .product-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
@@ -319,13 +330,17 @@ export default {
   padding: 0 16px;
 }
 
-.v-btn text-white {
-  width: 100%;
-  border-radius: 0;
-  font-size: 1rem;
+.carousel-btn {
+  transition: transform 0.3s ease;
 }
 
-.v-btn:hover {
+
+
+.product-btn {
+  transition: background-color 0.3s ease;
+}
+
+.product-btn:hover {
   background-color: #4a90e2 !important;
   color: #fff !important;
 }
