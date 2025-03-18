@@ -88,6 +88,7 @@
           ]"
           elevation="2"
           :hover="true"
+          @click="showProductDetails(product)"
         >
         <v-img
   v-if="product.image"  
@@ -96,21 +97,15 @@
   :width="viewType === 'list' ? '200' : '100%'"
   cover
   :contain="true"
-  class="bg-grey-lighten-2"
+  class="bg-grey-lighten-2 product-image"
 >
   <template v-slot:placeholder>
-    <v-row class="fill-height ma-0" align="center" justify="center" style="background: rgba(238,238,238,)">
+    <v-row class="fill-height ma-0" align="center" justify="center" style="background: rgba(238,238,238,1)">
       <v-progress-circular indeterminate color="primary" :size="50" :width="4"></v-progress-circular>
     </v-row>
   </template>
-  <div class="image-overlay">
-    <v-btn
-      icon="mdi-magnify"
-      size="large"
-      color="white"
-      variant="text"
-      @click="showProductDetails(product)"
-    ></v-btn>
+  <div class="image-overlay d-flex align-center justify-center">
+    <v-icon size="64" color="white">mdi-eye</v-icon>
   </div>
 </v-img>
 
@@ -179,6 +174,10 @@
   transition="dialog-fade"
 >
   <v-card v-if="selectedProduct" class="rounded-xl">
+  <!-- Botón de Cerrar -->
+  <v-card-actions class="justify-end">
+      <v-btn icon="mdi-close" @click="dialog = false" class="ma-2"></v-btn>
+    </v-card-actions>
     <!-- Imagen ajustada -->
     <v-img
       :src="selectedProduct.image"
@@ -410,15 +409,17 @@ export default {
 }
 
 .product-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  transform: scale(1.05);
 }
-
+.product-image {
+  position: relative;
+  transition: opacity 0.3s ease;
+}
 .product-card .v-img {
   transition: transform 0.3s;
 }
@@ -428,17 +429,11 @@ export default {
 }
 
 .image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
 }
 .product-card-description {
   display: -webkit-box;
