@@ -95,7 +95,7 @@
   :src="product.image"
   :aspect-ratio="16/9"
   :width="viewType === 'list' ? '200' : '100%'"
-  cover
+  
   :contain="true"
   class="bg-grey-lighten-2 product-image"
 >
@@ -174,17 +174,23 @@
   transition="dialog-fade"
 >
   <v-card v-if="selectedProduct" class="rounded-xl">
-  <!-- Botón de Cerrar -->
-  <v-card-actions class="justify-end">
-      <v-btn icon="mdi-close" @click="dialog = false" class="ma-2"></v-btn>
-    </v-card-actions>
+    
     <!-- Imagen ajustada -->
     <v-img
       :src="selectedProduct.image"
       height="300"
-      cover
+      
       class="bg-grey-lighten-2 product-dialog-image"
     >
+    <!-- Botón de Cerrar -->
+          <v-btn
+            icon="mdi-close"
+            @click="dialog = false"
+            class="ma-2 close-button"
+            color="white"
+            variant="tonal"
+            elevation="4"
+          ></v-btn>
       <div class="fill-height" style="background: rgba(0,0,0,0.3)">
         <v-container class="fill-height">
           <v-row align="end">
@@ -340,7 +346,7 @@ export default {
         id: 3,
         name: 'FRL Syntesi',
         category: 'FRL',
-        image: require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI.webp'), // Corregido
+        image: require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI2.webp'), // Corregido
         description: 'Unidad de mantenimiento FRL (Filtro, Regulador, Lubricador) serie Syntesi para sistemas neumáticos.',
         features: ['Filtración Eficiente', 'Regulación Precisa', 'Lubricación Controlada'],
         specifications: {
@@ -450,6 +456,7 @@ export default {
   text-overflow: ellipsis;
 }
 
+
 .product-card:hover .image-overlay {
   opacity: 1;
 }
@@ -484,12 +491,18 @@ export default {
   opacity: 0;
   transform: translateY(-20px);
 }
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10; /* Asegura que esté por encima de la imagen */
+}
 
 /* Imagen más pequeña y estilizada */
 .product-dialog-image {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  object-fit: cover;
+  
 }
 .btn-responsive {
   min-width: 180px; /* Ancho mínimo para evitar cortes */
