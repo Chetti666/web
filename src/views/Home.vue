@@ -183,7 +183,7 @@ export default {
         {
           title: 'FRL Syntesi',
           description: 'Unidad de mantenimiento FRL para sistemas neumáticos de alta eficiencia.',
-          image: require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI.webp'),
+          image: require('@/assets/images/grcontrol/productos/01-FRL-SYNTESI2.webp'),
           buttonText: 'Ver Más',
           buttonColor: 'primary',
           link: '/productos'

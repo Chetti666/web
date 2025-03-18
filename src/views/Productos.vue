@@ -178,8 +178,7 @@
     <!-- Imagen ajustada -->
     <v-img
       :src="selectedProduct.image"
-      height="300"
-      
+      height="350"
       class="bg-grey-lighten-2 product-dialog-image"
     >
     <!-- Botón de Cerrar -->
@@ -191,9 +190,9 @@
             variant="tonal"
             elevation="4"
           ></v-btn>
-      <div class="fill-height" style="background: rgba(0,0,0,0.3)">
+      <div class="fill-height" style="background: rgba(0,0,0,0.2)">
         <v-container class="fill-height">
-          <v-row align="end">
+          <v-row align="start" class="fill-height">
             <v-col>
               <h2 class="text-h4 text-white font-weight-bold mb-2">
                 {{ selectedProduct.name }}
@@ -456,7 +455,6 @@ export default {
   text-overflow: ellipsis;
 }
 
-
 .product-card:hover .image-overlay {
   opacity: 1;
 }
@@ -483,7 +481,7 @@ export default {
 /* Transición suave tipo fade */
 .dialog-fade-enter-active,
 .dialog-fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.5s ease;
 }
 
 .dialog-fade-enter-from,
