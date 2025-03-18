@@ -231,7 +231,7 @@ export default {
 
 /* Efecto de botón dinámico */
 .pulse-button {
-  animation: pulse 2s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
@@ -247,14 +247,14 @@ export default {
 }
 
 .outline-hover-secondary {
-  background-color: #000000be;
+  background-color: #000000a6;
   color: #ffffff;
   border-color: #000000;
   transition: 0.3s ease;
 }
 
 .outline-hover-secondary:hover {
-  background-color: #4a90e2;
+  background-color: #438adb;
   color: #ffffff;
   border-color: #4a90e2;
 }
@@ -262,7 +262,7 @@ export default {
 /* Sombra para mejorar legibilidad del texto */
 .text-shadow {
   color: #ffffff;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
 }
 
 /* Estilos del carrusel */
@@ -272,7 +272,7 @@ export default {
   max-height: 700px;
   object-fit: cover;
   margin: 0 auto;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 @media (min-width: 1440px) {
@@ -281,7 +281,7 @@ export default {
   }
 }
 @media (max-width: 600px) {
-  .carousel-content {
+  .carouesel-image .carousel-content {
     margin-top: 0;
   }
 }

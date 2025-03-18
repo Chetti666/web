@@ -46,9 +46,9 @@
             <p>{{ area.descripcion }}</p>
             <v-chip-group>
               <v-chip v-for="(tag, index) in area.tags" 
-                     :key="index"
-                     :color="area.color"
-                     variant="outlined">
+                    :key="index"
+                    :color="area.color"
+                    variant="outlined">
                 {{ tag }}
               </v-chip>
             </v-chip-group>
