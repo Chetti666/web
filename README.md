@@ -33,5 +33,5 @@ npm run build
 
 - `/src/views/` - Páginas principales
 - `/src/components/` - Componentes reutilizables
-- `/public/images/` - Recursos de imágenes
-- `/dist/` - Archivos compilados para producción
+- `/src/assets/images` - Recursos de imágenes
+- `/docs/` - Archivos compilados para producción
