@@ -265,14 +265,14 @@ export default {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
 
-/* Estilos de las imágenes del carrusel ajustadas */
+/* Estilos del carrusel */
 .carousel-image {
   width: 100%;
   height: 60vh;
   max-height: 700px;
   object-fit: cover;
   margin: 0 auto;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.6s ease-in-out;
 }
 
 @media (min-width: 1440px) {
@@ -285,21 +285,19 @@ export default {
     margin-top: 0;
   }
 }
-.v-carousel__controls .v-btn {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
-  height: 50px;
-  min-width: 50px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.carousel-btn {
+  transition: transform 0.3s ease;
+  line-height: 1.5rem;
+  padding: 8px 16px;
+  min-width: 150px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.v-carousel__controls .v-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-.v-carousel__controls {
-  z-index: 4;
+.carousel-btn:hover {
+  transform: scale(1.05);
 }
 
 
@@ -329,12 +327,6 @@ export default {
   font-size: 1rem;
   padding: 0 16px;
 }
-
-.carousel-btn {
-  transition: transform 0.3s ease;
-}
-
-
 
 .product-btn {
   transition: background-color 0.3s ease;

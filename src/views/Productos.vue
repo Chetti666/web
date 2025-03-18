@@ -172,94 +172,99 @@
     </v-row>
 
     <!-- Diálogo de Detalles del Producto -->
-    <v-dialog v-model="dialog" max-width="900" class="product-dialog">
-      <v-card v-if="selectedProduct" class="rounded-xl">
-        <v-img
-          :src="selectedProduct.image"
-          height="400"
-          cover
-          class="bg-grey-lighten-2"
-        >
-          <div class="fill-height" style="background: rgba(0,0,0,0.3)">
-            <v-container class="fill-height">
-              <v-row align="end">
-                <v-col>
-                  <h2 class="text-h3 text-white font-weight-bold mb-2">
-                    {{ selectedProduct.name }}
-                  </h2>
-                  <v-chip
-                    color="primary"
-                    size="large"
-                    variant="flat"
-                  >
-                    {{ selectedProduct.category }}
-                  </v-chip>
-                </v-col>
-              </v-row>
-            </v-container>
-          </div>
-        </v-img>
-        
-        <v-container class="pa-8">
-          <v-row>
-            <v-col cols="12" md="8">
-              <p class="text-body-1 mb-6 product-dialog-description">{{ selectedProduct.description }}</p>
-              
-              <h3 class="text-h5 font-weight-bold mb-4">Características</h3>
-              <v-chip-group class="mb-6">
-                <v-chip
-                  v-for="(feature, index) in selectedProduct.features"
-                  :key="index"
-                  color="primary"
-                  variant="outlined"
-                  size="large"
-                >
-                  {{ feature }}
-                </v-chip>
-              </v-chip-group>
-
-              <h3 class="text-h5 font-weight-bold mb-4">Especificaciones Técnicas</h3>
-              <v-list class="rounded-lg" bg-color="grey-lighten-4">
-                <v-list-item
-                  v-for="(spec, key) in selectedProduct.specifications"
-                  :key="key"
-                  :title="key"
-                  :subtitle="spec"
-                  class="py-3"
-                ></v-list-item>
-              </v-list>
-            </v-col>
-
-            <v-col cols="12" md="4">
-              <v-card class="rounded-lg pa-6" color="grey-lighten-4">
-                <h4 class="text-h6 font-weight-bold mb-4">Documentación</h4>
-                <v-btn
-                  block
-                  color="primary"
-                  variant="flat"
-                  size="large"
-                  prepend-icon="mdi-download"
-                  class="mb-4"
-                  @click="downloadDatasheet(selectedProduct)"
-                >
-                  Descargar Ficha Técnica
-                </v-btn>
-                <v-btn
-                  block
-                  color="primary"
-                  variant="outlined"
-                  size="large"
-                  prepend-icon="mdi-email"
-                  to="/contacto"
-                >
-                  Solicitar Cotización
-                </v-btn>
-              </v-card>
+<v-dialog
+  v-model="dialog"
+  max-width="800"
+  class="product-dialog"
+  transition="dialog-fade"
+>
+  <v-card v-if="selectedProduct" class="rounded-xl">
+    <!-- Imagen ajustada -->
+    <v-img
+      :src="selectedProduct.image"
+      height="300"
+      cover
+      class="bg-grey-lighten-2 product-dialog-image"
+    >
+      <div class="fill-height" style="background: rgba(0,0,0,0.3)">
+        <v-container class="fill-height">
+          <v-row align="end">
+            <v-col>
+              <h2 class="text-h4 text-white font-weight-bold mb-2">
+                {{ selectedProduct.name }}
+              </h2>
+              <v-chip color="primary" size="large" variant="flat">
+                {{ selectedProduct.category }}
+              </v-chip>
             </v-col>
           </v-row>
         </v-container>
-      </v-card>
-    </v-dialog>
+      </div>
+    </v-img>
+
+    <!-- Contenido con scroll -->
+    <v-container class="pa-6 modal-content-scroll">
+      <v-row>
+        <v-col cols="12" md="8">
+          <p class="text-body-1 mb-6 product-dialog-description">
+            {{ selectedProduct.description }}
+          </p>
+
+          <h3 class="text-h5 font-weight-bold mb-4">Características</h3>
+          <v-chip-group class="mb-6">
+            <v-chip
+              v-for="(feature, index) in selectedProduct.features"
+              :key="index"
+              color="primary"
+              variant="outlined"
+              size="large"
+            >
+              {{ feature }}
+            </v-chip>
+          </v-chip-group>
+
+          <h3 class="text-h5 font-weight-bold mb-4">Especificaciones Técnicas</h3>
+          <v-list class="rounded-lg" bg-color="grey-lighten-4">
+            <v-list-item
+              v-for="(spec, key) in selectedProduct.specifications"
+              :key="key"
+              :title="key"
+              :subtitle="spec"
+              class="py-3"
+            ></v-list-item>
+          </v-list>
+        </v-col>
+
+        <v-col cols="12" md="4">
+          <v-card class="rounded-lg pa-6" color="grey-lighten-4">
+            <h4 class="text-h6 font-weight-bold mb-4">Documentación</h4>
+            <v-btn
+  block
+  color="primary"
+  variant="flat"
+  size="large"
+  :class="{'btn-responsive': $vuetify.display.mdAndUp}"
+  prepend-icon="mdi-download"
+  class="mb-4"
+  @click="downloadDatasheet(selectedProduct)"
+>Ficha Técnica
+</v-btn>
+            <v-btn
+              block
+              color="primary"
+              variant="outlined"
+              size="large"
+              prepend-icon="mdi-email"
+              to="/contacto"
+            >
+              Solicitar Cotización
+            </v-btn>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</v-dialog>
 
     <!-- Sección de Consulta -->
     <v-row class="mt-16 mb-8">
@@ -399,7 +404,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .productos-container {
   max-width: 1400px;
@@ -467,6 +471,37 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 4.5em;
+}
+/* Estilo para el scroll dentro del modal */
+.modal-content-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Transición suave tipo fade */
+.dialog-fade-enter-active,
+.dialog-fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dialog-fade-enter-from,
+.dialog-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Imagen más pequeña y estilizada */
+.product-dialog-image {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  object-fit: cover;
+}
+.btn-responsive {
+  min-width: 180px; /* Ancho mínimo para evitar cortes */
+  max-width: 100%; /* Que se ajuste sin estirarse de más */
+  white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+  justify-content:left;  /* Centra texto e ícono correctamente */
+  gap: 8px; /* Espacio entre el ícono y el texto */
 }
 
 .v-btn-toggle {
