@@ -24,22 +24,18 @@
           <!-- Navigation Menu for larger screens -->
           <v-col cols="auto" class="d-none d-md-flex align-center">
             <v-btn
-              v-for="(item, i) in menuItems"
+              v-for="(item, i) in displayedMenuItems"
               :key="i"
               :to="item.to"
               variant="text"
               class="mx-2 text-body-1"
               color="primary"
               :active-class="'font-weight-bold'"
+              @click="handleMenuItemClick(item)"
             >
               {{ item.title }}
             </v-btn>
-            <v-btn
-              color="primary"
-              class="ml-4"
-              variant="flat"
-              to="/contacto"
-            >
+            <v-btn color="primary" class="ml-4" variant="flat" to="/contacto">
               Contáctenos
             </v-btn>
           </v-col>
@@ -72,15 +68,15 @@
         </v-list-item>
 
         <v-list-item
-          v-for="(item, i) in menuItems"
+          v-for="(item, i) in displayedMenuItems"
           :key="i"
           :to="item.to"
           :prepend-icon="item.icon"
           :title="item.title"
           color="primary"
           class="mb-1"
+          @click="handleMenuItemClick(item)"
         ></v-list-item>
-
         <v-divider class="my-4"></v-divider>
 
         <v-list-item
@@ -94,7 +90,7 @@
 
     <!-- Main Content -->
     <v-main>
-      <router-view></router-view>
+      <router-view @login="handleLogin"></router-view>
     </v-main>
 
     <!-- Footer -->
@@ -169,6 +165,7 @@ export default {
   name: 'App',
   data: () => ({
     drawer: false,
+    isLoggedIn: false, // Track login status
     menuItems: [
       {
         title: 'Inicio',
@@ -184,7 +181,22 @@ export default {
         title: 'Servicios',
         to: '/servicios',
         icon: 'mdi-tools'
-      }
+      },
+      {
+        title: 'Mantenimiento',
+        to: '/mantenimiento',
+        icon: 'mdi-wrench', // Icon for Mantenimiento
+      },
+      {
+        title: 'Logout',
+        to: '/login',
+        icon: 'mdi-logout', // Icon for Logout
+      },
+      {
+        title: 'Login',
+        to: '/login',
+        icon: 'mdi-login',
+      },
     ],
     socialIcons: [
       {
@@ -200,8 +212,34 @@ export default {
         link: 'https://www.instagram.com/grcontrol'
       }
     ]
-  })
-}
+  }),
+  computed: {
+    displayedMenuItems() {
+      if (this.isLoggedIn) {
+        return this.menuItems.filter((item) => item.title !== "Login");
+      } else {
+        return this.menuItems.filter(
+          (item) => item.title !== "Mantenimiento" && item.title !== "Logout"
+        );
+      }
+    },
+  },
+  methods: {
+    handleLogin() {
+      this.isLoggedIn = true;
+    },
+    handleLogout() {
+      this.isLoggedIn = false;
+      this.$router.push({ name: "HomeView" }); // Navigate to home after logout
+    },
+    handleMenuItemClick(item) {
+      if (item.title === "Logout") {
+        this.handleLogout();
+      }
+    },
+  },
+  // ... (rest of your script) ...
+};
 </script>
 
 <style>
