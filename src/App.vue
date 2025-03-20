@@ -89,7 +89,7 @@
     </v-navigation-drawer>
 
     <!-- Main Content -->
-    <v-main>
+    <v-main class="app-main">
       <router-view @login="handleLogin"></router-view>
     </v-main>
 
@@ -102,13 +102,15 @@
       <v-container>
         <v-row>
           <v-col cols="12" md="4" class="text-center text-md-left">
-            <v-img
+            <div class="footer-logo-container">
+            <v-img 
               :src="require('@/assets/images/brand/GR_CONTROL.webp')"
               alt="GR Control Logo"
               height="65"
-              contain
-              class="mb-4"
+              contain 
+              class="mb-4" 
             />
+            </div>
             <p class="mb-0">Soluciones en automatización industrial</p>
           </v-col>
 
@@ -129,6 +131,7 @@
           </v-col>
 
           <v-col cols="12" md="4" class="text-center text-md-right">
+            <div class="footer-follow-us-container">
             <h3 class="text-h6 mb-4">Síguenos</h3>
             <div class="d-flex justify-center justify-md-end">
               <v-btn
@@ -142,6 +145,7 @@
               >
                 <v-icon>{{ icon.icon }}</v-icon>
               </v-btn>
+            </div>
             </div>
           </v-col>
         </v-row>
@@ -243,6 +247,11 @@ export default {
 </script>
 
 <style>
+
+.app-main {
+  flex: 1;
+  min-height: calc(100vh - 90px - 160px); /* 90px (header) + 160px (footer) */
+}
 .footer {
   margin-top: auto;
 }
@@ -301,14 +310,21 @@ export default {
   display: block;
   margin: 0 auto;
 }
+/* Footer Logo Alignment */
+.footer-logo-container {
+  margin-left: -170px;
+  display: flex;
+  justify-content: flex-start;
+}
 
-.footer-logo {
-  height: 65px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 1.5rem;
+/* "Síguenos" Alignment */
+.footer-follow-us-container {
+  margin-right: -50px;
+  text-align: center;
+}
+
+.footer-follow-us-container .d-flex {
+  justify-content:space-evenly !important;
 }
 
 @media (min-width: 960px) {

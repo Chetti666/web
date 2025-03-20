@@ -7,4 +7,8 @@ export default defineConfig({
     vue(),
     vuetify({ autoImport: true }),
   ],
+  base: process.env.NODE_ENV === 'production' ? '/web/' : '/',
+  build: {
+    outDir: 'docs'
+  }
 })
